@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "zDbfawkJ+7c=",
+  "success": true,
+  "projectFilePath": "/Users/user/nay-projects/temperature-report-aspnet-core-reactjs/backend-aspnetcore/backend-aspnetcore.csproj",
+  "expectedPackageFiles": [
+    "/Users/user/.nuget/packages/microsoft.aspnetcore.openapi/9.0.10/microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
