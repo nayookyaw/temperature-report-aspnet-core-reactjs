@@ -8,7 +8,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection BindApplicationServices(this IServiceCollection services)
     {
         // 1) Scan all app assemblies that start with your root name
-        var root = "BackendAspNetCore"; // <-- change if your assemblies use a different prefix
+        var root = "BackendAspNetCore"; // <-- root namespace
         var entry = Assembly.GetEntryAssembly()!;
         var assemblies = new List<Assembly> { entry };
 
