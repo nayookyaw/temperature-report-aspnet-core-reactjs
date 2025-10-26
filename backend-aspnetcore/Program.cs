@@ -1,8 +1,16 @@
+using BackendAspNetCore.Data;
+using BackendAspNetCore.DependencyInjectionRegister;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Register EF Core DbContext
+builder.Services.AddDbContext<AppDbContext>(opts =>
+    opts.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
 // bind interface and concrete class
 builder.Services.BindApplicationServices();

@@ -1,3 +1,7 @@
+using Microsoft.Extensions.DependencyInjection;
+
+namespace BackendAspNetCore.DependencyInjectionRegister;
+
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection BindApplicationServices(this IServiceCollection services)
