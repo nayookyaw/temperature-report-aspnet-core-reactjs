@@ -1,3 +1,4 @@
+using BackendAspNetCore.Dtos.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendAspNetCore.Controllers;
@@ -14,7 +15,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<UserDto>>> GetAllUser()
+    public async Task<IActionResult> GetAllUser()
     {
         var users = await _iUserService.GetAllUserAsync();
         return Ok(users);

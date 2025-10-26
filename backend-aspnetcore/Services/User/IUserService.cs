@@ -1,4 +1,6 @@
+using BackendAspNetCore.Dtos.Response;
+
 public interface IUserService
 {
-    Task<List<UserDto>> GetAllUserAsync();
+    Task<ApiResponse<List<UserDto>>> GetAllUserAsync();
 }

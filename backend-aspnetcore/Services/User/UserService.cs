@@ -1,3 +1,5 @@
+using BackendAspNetCore.Dtos.Response;
+
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepo;
@@ -6,9 +8,11 @@ public class UserService : IUserService
         _userRepo = userRepo;
     }
 
-    public async Task<List<UserDto>> GetAllUserAsync()
+    public async Task<ApiResponse<List<UserDto>>> GetAllUserAsync()
     {
         var userList = await _userRepo.GetAllUsersAsync();
-        return userList.Select(UserMapper.ToDto).ToList();
+        var userDtoList = userList.Select(UserMapper.ToDto).ToList();
+
+        return ApiResponse<List<UserDto>>.SuccessResponse(userDtoList, "Users has been retrieved", 200);
     }
 }

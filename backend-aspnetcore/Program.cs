@@ -1,6 +1,7 @@
 using BackendAspNetCore.Data;
 using BackendAspNetCore.DependencyInjectionRegister;
 using Microsoft.EntityFrameworkCore;
+using BackendAspNetCore.Dtos.Response;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Global exception handler
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 app.MapControllers();
