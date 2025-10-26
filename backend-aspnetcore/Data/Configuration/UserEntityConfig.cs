@@ -1,6 +1,9 @@
 
+using BackendAspNetCore.Models.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace BackendAspNetCore.Data.Configuration;
 
 public class UserEntityConfig : IEntityTypeConfiguration<User>
 {

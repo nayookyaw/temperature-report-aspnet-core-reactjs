@@ -1,7 +1,6 @@
-namespace BackendAspNetCore.Models.User;
-public class User
+
+public class AddUserRequestBody
 {
-    public Guid Id { get; set; }
     public string Username { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
 }

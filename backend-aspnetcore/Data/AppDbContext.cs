@@ -1,4 +1,6 @@
+using BackendAspNetCore.Models.User;
 using Microsoft.EntityFrameworkCore;
+
 namespace BackendAspNetCore.Data;
 public class AppDbContext : DbContext
 {

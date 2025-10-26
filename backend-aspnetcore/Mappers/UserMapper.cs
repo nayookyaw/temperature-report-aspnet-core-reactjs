@@ -1,3 +1,6 @@
+using BackendAspNetCore.Models.User;
+
+namespace BackendAspNetCore.Mappers;
 
 public static class UserMapper
 {

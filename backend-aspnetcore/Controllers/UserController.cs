@@ -1,4 +1,5 @@
 using BackendAspNetCore.Dtos.Response;
+using BackendAspNetCore.Services.UserServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendAspNetCore.Controllers;
@@ -17,7 +18,14 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllUser()
     {
-        var users = await _iUserService.GetAllUserAsync();
-        return Ok(users);
+        var response = await _iUserService.GetAllUserAsync();
+        return Ok(response);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddUser([FromBody] AddUserRequestBody input)
+    {
+        var response = await _iUserService.AddUserAsync(input);
+        return Ok(response);
     }
 }
