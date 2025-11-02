@@ -26,6 +26,6 @@ public class UserController : ControllerBase
     public async Task<IActionResult> AddUser([FromBody] AddUserRequestBody input)
     {
         var response = await _iUserService.AddUserAsync(input);
-        return Ok(response);
+        return StatusCode(response.StatusCode, response);
     }
 }

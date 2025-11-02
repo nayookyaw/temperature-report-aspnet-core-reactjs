@@ -13,7 +13,7 @@ public class UserService : IUserService
         _userRepo = userRepo;
     }
 
-    public async Task<Object> GetAllUserAsync()
+    public async Task<ApiResponse> GetAllUserAsync()
     {
         var userList = await _userRepo.GetAllUsersAsync();
         List<UserDto> userDtoList = userList.Select(u => UserMapper.ToDto(u)).ToList();
@@ -26,12 +26,12 @@ public class UserService : IUserService
         return ApiResponse<List<UserDto>>.SuccessResponse(userDtoList, "Users has been retrieved", 200);
     }
 
-    public async Task<Object> AddUserAsync(AddUserRequestBody input)
+    public async Task<ApiResponse> AddUserAsync(AddUserRequestBody input)
     {
         User? existUser = await _userRepo.GetUserByEmail(input.Email);
         if (existUser == null)
         {
-            return ApiResponseFail.FailResponse("No user is found", 400);
+            return ApiResponseFail.FailResponse("No user is found!", 400);
         }
 
         UserDto userDto = UserMapper.ToDto(existUser);

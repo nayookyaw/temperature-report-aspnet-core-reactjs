@@ -17,4 +17,10 @@ public class UserRepository : IUserRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Email == email);
     }
+    public async Task<User> CreateUserAsync(User newUser)
+    {
+        _db.Users.Add(newUser);
+        await _db.SaveChangesAsync();
+        return newUser;
+    }
 }

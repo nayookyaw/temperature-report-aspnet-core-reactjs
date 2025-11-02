@@ -1,17 +1,14 @@
 namespace BackendAspNetCore.Dtos.Response;
 
-public class ApiResponseFail
+public class ApiResponseFail : ApiResponse
 {
-    public int StatusCode { get; set; }
-    public int IsSuccess { get; set; }
-    public string Message { get; set; } = string.Empty;
     public static ApiResponseFail FailResponse(string message, int statusCode = 400)
     {
-        return new()
+        return new ApiResponseFail()
         {
             StatusCode = statusCode,
-            IsSuccess = 0,
+            IsSuccess = false,
             Message = message,
-        };
+        }; 
     }
 }
