@@ -3,6 +3,7 @@ using System;
 using BackendAspNetCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendAspNetCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251102075930_OrderColumnUser")]
+    partial class OrderColumnUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
@@ -29,10 +32,6 @@ namespace BackendAspNetCore.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(3);
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(5);
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -46,7 +45,7 @@ namespace BackendAspNetCore.Migrations
                     b.Property<string>("Remark")
                         .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(6);
+                        .HasColumnOrder(5);
 
                     b.Property<string>("Username")
                         .IsRequired()

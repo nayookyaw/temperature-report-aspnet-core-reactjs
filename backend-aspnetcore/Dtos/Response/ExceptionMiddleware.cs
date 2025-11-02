@@ -1,6 +1,5 @@
 using System.Net;
 using System.Text.Json;
-using BackendAspNetCore.Dtos.Response;
 
 namespace BackendAspNetCore.Dtos.Response;
 public class ExceptionMiddleware

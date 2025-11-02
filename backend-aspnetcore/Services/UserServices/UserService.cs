@@ -2,6 +2,7 @@ using BackendAspNetCore.Dtos.Response;
 using BackendAspNetCore.Models.User;
 using BackendAspNetCore.Mappers;
 using BackendAspNetCore.Repositories.UserRepo;
+using BackendAspNetCore.Utils;
 
 namespace BackendAspNetCore.Services.UserServices;
 
@@ -29,12 +30,32 @@ public class UserService : IUserService
     public async Task<ApiResponse> AddUserAsync(AddUserRequestBody input)
     {
         User? existUser = await _userRepo.GetUserByEmail(input.Email);
+        if (existUser != null)
+        {
+            return ApiResponseFail.FailResponse("Email is already exist,", 400);
+        }
+        var newUser = new User
+        {
+            Username = input.Username.Trim(),
+            Email = input.Email.Trim(),
+            Password = TextUtil.GenerateSecureRandomString(12),
+        };
+        User user = await _userRepo.CreateUserAsync(newUser);
+
+        UserDto userDto = UserMapper.ToDto(user);
+        return ApiResponse<UserDto>.SuccessResponse(userDto, "New user has been added", 200);
+    }
+
+    public async Task<ApiResponse> UpdateUserAsync(Guid userId, UpdateUserRequestBody input)
+    {
+        User? existUser = await _userRepo.GetUserById(userId);
         if (existUser == null)
         {
             return ApiResponseFail.FailResponse("No user is found!", 400);
         }
-
+        existUser.Email = input.Email;
+        await _userRepo.UpdateUserAsync(existUser);
         UserDto userDto = UserMapper.ToDto(existUser);
-        return ApiResponse<UserDto>.SuccessResponse(userDto, "New user has been added", 200);
+        return ApiResponse<UserDto>.SuccessResponse(userDto, "User has been updated", 200);
     }
 }
