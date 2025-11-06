@@ -20,8 +20,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register EF Core DbContext
+// builder.Services.AddDbContext<AppDbContext>(opts =>
+//     opts.UseSqlite(builder.Configuration.GetConnectionString("Default")));
+// register ms-sql
 builder.Services.AddDbContext<AppDbContext>(opts =>
-    opts.UseSqlite(builder.Configuration.GetConnectionString("Default")));
+{
+    opts.UseSqlServer(
+        builder.Configuration.GetConnectionString("Default"),
+        sql =>
+        {
+            sql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            sql.CommandTimeout(180);
+        });
+});
 
 // bind interface and concrete class
 builder.Services.BindApplicationServices();
