@@ -27,8 +27,9 @@ public class SensorService : ISensorService
             existSensor.Temperature = input.Temperature;
             existSensor.Humidity = input.Humidity;
             existSensor.LastUpdatedUtc = DatetimeUtil.GetCurrentUtcDatetime();
-            _iSensorRepo.UpdateSensor();
+            await _iSensorRepo.UpdateSensor(existSensor);
             sensorDto = SensorMapper.ToDto(existSensor);
+            Console.WriteLine($"update {input.Temperature}");
 
             return ApiResponse<SensorDto>.SuccessResponse(sensorDto, "Sensor has been updated", 200);
         }

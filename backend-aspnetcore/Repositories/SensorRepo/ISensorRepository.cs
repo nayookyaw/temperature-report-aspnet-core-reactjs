@@ -5,7 +5,7 @@ namespace BackendAspNetCore.Repositories.SensorRepo;
 public interface ISensorRepository
 {
     public Task<Sensor> SaveSensor(Sensor newSensor);
-    public void UpdateSensor();
+    public Task<Sensor> UpdateSensor(Sensor sensor);
     public Task<Sensor?> GetSensorByMacAddress(string macAddress);
     public Task<List<Sensor>> GetAllSensorAsync();
 }

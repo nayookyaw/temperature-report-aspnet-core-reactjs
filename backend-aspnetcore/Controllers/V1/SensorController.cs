@@ -13,14 +13,14 @@ public class SensorController(ISensorService iSensorService) : ControllerBase
     private readonly ISensorService _iSensorService = iSensorService;
 
     [HttpPost]
-    public async Task<IActionResult> RemoveSensor([FromBody] AddSensorRequestBody input)
+    public async Task<IActionResult> SaveOrUpdateSensor([FromBody] AddSensorRequestBody input)
     {
         var response = await _iSensorService.SaveOrUpdateSensorAsync(input);
         return StatusCode(response.StatusCode, response);
     }
 
     [HttpGet("list")]
-    public async Task<IActionResult> GetAllSensorAsync([FromBody] GetAllSensorRequestBody input)
+    public async Task<IActionResult> GetAllSensorAsync([FromQuery] GetAllSensorRequestBody input)
     {
         var response = await _iSensorService.GetAllSensorAsync(input);
         return StatusCode(response.StatusCode, response);

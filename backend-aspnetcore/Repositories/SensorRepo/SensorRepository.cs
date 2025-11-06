@@ -17,9 +17,11 @@ public class SensorRepository : ISensorRepository
         return newSensor;
     }
 
-    public async void UpdateSensor()
+    public async Task<Sensor> UpdateSensor(Sensor updateSensor)
     {
+        _db.Sensors.Update(updateSensor);
         await _db.SaveChangesAsync();
+        return updateSensor;
     }
 
     public async Task<Sensor?> GetSensorByMacAddress(string macAddress)
