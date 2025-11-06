@@ -4,6 +4,7 @@ using BackendAspNetCore.Mappers;
 using BackendAspNetCore.Models;
 using BackendAspNetCore.Repositories.SensorRepo;
 using BackendAspNetCore.Dtos.Response;
+using BackendAspNetCore.Utils;
 
 namespace BackendAspNetCore.Services.SensorServices;
 
@@ -24,6 +25,7 @@ public class SensorService : ISensorService
         {
             existSensor.Temperature = input.Temperature;
             existSensor.Humidity = input.Humidity;
+            existSensor.LastUpdatedUtc = DatetimeUtil.GetCurrentUtcDatetime();
             _iSensorRepo.UpdateSensor();
             sensorDto = SensorMapper.ToDto(existSensor);
 
@@ -34,6 +36,7 @@ public class SensorService : ISensorService
             MacAddress = input.MacAddress,
             Temperature = input.Temperature,
             Humidity = input.Humidity,
+            LastUpdatedUtc = DatetimeUtil.GetCurrentUtcDatetime(),
         };
         Sensor sensor = await _iSensorRepo.SaveSensor(newSensor);
         sensorDto = SensorMapper.ToDto(sensor); 

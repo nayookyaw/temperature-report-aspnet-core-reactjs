@@ -6,14 +6,9 @@ namespace BackendAspNetCore.Controllers;
 
 [ApiController]
 [Route("api/user")]
-public class UserController : ControllerBase
+public class UserController(IUserService iUserService) : ControllerBase
 {
-    private readonly IUserService _iUserService;
-
-    public UserController(IUserService iUserService)
-    {
-        _iUserService = iUserService;
-    }
+    private readonly IUserService _iUserService = iUserService;
 
     [HttpGet]
     public async Task<IActionResult> GetAllUser()
