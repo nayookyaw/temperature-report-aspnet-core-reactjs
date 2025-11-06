@@ -1,5 +1,5 @@
 
-using BackendAspNetCore.Models.User;
+using BackendAspNetCore.Models;
 
 namespace BackendAspNetCore.Repositories.UserRepo;
 public interface IUserRepository

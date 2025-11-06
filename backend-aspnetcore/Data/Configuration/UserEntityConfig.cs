@@ -1,5 +1,5 @@
 
-using BackendAspNetCore.Models.User;
+using BackendAspNetCore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

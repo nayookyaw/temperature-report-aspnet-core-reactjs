@@ -1,5 +1,5 @@
 using BackendAspNetCore.Dtos.Response;
-using BackendAspNetCore.Models.User;
+using BackendAspNetCore.Models;
 using BackendAspNetCore.Mappers;
 using BackendAspNetCore.Repositories.UserRepo;
 using BackendAspNetCore.Utils;

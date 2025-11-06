@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "m7Sme4v3iwQ=",
+  "dgSpecHash": "SPNpTZn140U=",
   "success": true,
   "projectFilePath": "/Users/user/nay-projects/temperature-report-aspnet-core-reactjs/backend-aspnetcore/backend-aspnetcore.csproj",
   "expectedPackageFiles": [
     "/Users/user/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.aspnetcore.mvc.versioning/5.1.0/microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.aspnetcore.mvc.versioning.apiexplorer/5.1.0/microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.aspnetcore.openapi/9.0.10/microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.build.framework/17.8.3/microsoft.build.framework.17.8.3.nupkg.sha512",

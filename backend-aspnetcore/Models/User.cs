@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BackendAspNetCore.Models.User;
+namespace BackendAspNetCore.Models;
 
 public class User
 {

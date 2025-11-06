@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using BackendAspNetCore.Data;
-using BackendAspNetCore.Models.User;
+using BackendAspNetCore.Models;
 
 namespace BackendAspNetCore.Repositories.UserRepo;
 
