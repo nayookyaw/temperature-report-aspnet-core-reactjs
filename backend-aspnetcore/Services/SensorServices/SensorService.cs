@@ -22,7 +22,7 @@ public class SensorService : ISensorService
         SensorDto sensorDto;
         Sensor? existSensor = await _iSensorRepo.GetSensorByMacAddress(input.MacAddress);
         if (existSensor != null)
-        {
+        {   
             existSensor.Temperature = input.Temperature;
             existSensor.Humidity = input.Humidity;
             existSensor.LastUpdatedUtc = DatetimeUtil.GetCurrentUtcDatetime();

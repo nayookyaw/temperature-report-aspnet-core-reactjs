@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendAspNetCore.Controllers;
 
 [ApiController]
-[Route("api/user")]
+[ApiVersion("2.0")]
+[Route("v{version:apiVersion}/user")]
 public class UserController(IUserService iUserService) : ControllerBase
 {
     private readonly IUserService _iUserService = iUserService;

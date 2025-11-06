@@ -1,7 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
 using BackendAspNetCore.Services.SensorServices;
-using BackendAspNetCore.Utils;
 
 namespace BackendAspNetCore.Controllers.V1;
 
@@ -17,7 +16,5 @@ public class SensorController(ISensorService iSensorService) : ControllerBase
     {
         var response = await _iSensorService.SaveOrUpdateSensorAsync(input);
         return StatusCode(response.StatusCode, response);
-        // Console.WriteLine($"calling now {DatetimeUtil.GetCurrentUtcDatetime()}");
-        // return StatusCode(200);
     }
 }
