@@ -2,3 +2,6 @@
 bin/
 obj/
 out/
+app.db
+node_modules/
+.env
