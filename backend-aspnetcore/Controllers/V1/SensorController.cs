@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using BackendAspNetCore.Services.SensorServices;
+using BackendAspNetCore.RequestBody.Sensor;
 
 namespace BackendAspNetCore.Controllers.V1;
 
@@ -15,6 +16,13 @@ public class SensorController(ISensorService iSensorService) : ControllerBase
     public async Task<IActionResult> RemoveSensor([FromBody] AddSensorRequestBody input)
     {
         var response = await _iSensorService.SaveOrUpdateSensorAsync(input);
+        return StatusCode(response.StatusCode, response);
+    }
+
+    [HttpGet("list")]
+    public async Task<IActionResult> GetAllSensorAsync([FromBody] GetAllSensorRequestBody input)
+    {
+        var response = await _iSensorService.GetAllSensorAsync(input);
         return StatusCode(response.StatusCode, response);
     }
 }

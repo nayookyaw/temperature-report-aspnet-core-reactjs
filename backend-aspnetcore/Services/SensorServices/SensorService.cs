@@ -5,6 +5,7 @@ using BackendAspNetCore.Models;
 using BackendAspNetCore.Repositories.SensorRepo;
 using BackendAspNetCore.Dtos.Response;
 using BackendAspNetCore.Utils;
+using BackendAspNetCore.RequestBody.Sensor;
 
 namespace BackendAspNetCore.Services.SensorServices;
 
@@ -22,7 +23,7 @@ public class SensorService : ISensorService
         SensorDto sensorDto;
         Sensor? existSensor = await _iSensorRepo.GetSensorByMacAddress(input.MacAddress);
         if (existSensor != null)
-        {   
+        {
             existSensor.Temperature = input.Temperature;
             existSensor.Humidity = input.Humidity;
             existSensor.LastUpdatedUtc = DatetimeUtil.GetCurrentUtcDatetime();
@@ -39,7 +40,18 @@ public class SensorService : ISensorService
             LastUpdatedUtc = DatetimeUtil.GetCurrentUtcDatetime(),
         };
         Sensor sensor = await _iSensorRepo.SaveSensor(newSensor);
-        sensorDto = SensorMapper.ToDto(sensor); 
+        sensorDto = SensorMapper.ToDto(sensor);
         return ApiResponse<SensorDto>.SuccessResponse(sensorDto, "New sensor has been added", 200);
+    }
+    
+    public async Task<ApiResponse> GetAllSensorAsync(GetAllSensorRequestBody input)
+    {
+        List<Sensor> sensors = await _iSensorRepo.GetAllSensorAsync();
+        List<SensorDto> sensorList = sensors.Select(s => SensorMapper.ToDto(s)).ToList();
+        if (sensorList.Count == 0)
+        {
+            return ApiResponseFail.FailResponse("No sensor is found", 400);
+        }
+        return ApiResponse<List<SensorDto>>.SuccessResponse(sensorList, "Sensor list has been retrieved", 200);
     }
 }

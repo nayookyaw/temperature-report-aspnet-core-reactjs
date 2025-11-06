@@ -28,4 +28,9 @@ public class SensorRepository : ISensorRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(s => s.MacAddress == macAddress);
     }
+
+    public async Task<List<Sensor>> GetAllSensorAsync()
+    {
+        return await _db.Sensors.AsNoTracking().OrderBy(s => s.MacAddress).ToListAsync();
+    }
 }

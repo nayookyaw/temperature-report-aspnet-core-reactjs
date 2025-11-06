@@ -10,5 +10,6 @@ public static class SensorMapper
         MacAddress = sensor.MacAddress,
         Temperature = sensor.Temperature,
         Humidity = sensor.Humidity,
+        LastUpdatedUtc = sensor.LastUpdatedUtc,
     };
 }

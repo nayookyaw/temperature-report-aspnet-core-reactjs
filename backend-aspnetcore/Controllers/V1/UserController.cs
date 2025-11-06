@@ -2,7 +2,7 @@ using BackendAspNetCore.Dtos.Response;
 using BackendAspNetCore.Services.UserServices;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BackendAspNetCore.Controllers;
+namespace BackendAspNetCore.Controllers.V1;
 
 [ApiController]
 [ApiVersion("2.0")]

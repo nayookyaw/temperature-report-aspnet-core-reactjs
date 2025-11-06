@@ -7,4 +7,5 @@ public interface ISensorRepository
     public Task<Sensor> SaveSensor(Sensor newSensor);
     public void UpdateSensor();
     public Task<Sensor?> GetSensorByMacAddress(string macAddress);
+    public Task<List<Sensor>> GetAllSensorAsync();
 }
