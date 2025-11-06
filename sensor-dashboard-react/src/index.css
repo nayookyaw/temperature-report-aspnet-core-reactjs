@@ -1,0 +1,18 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --card: white;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-sm border border-slate-200;
+}
+.card-header {
+  @apply text-slate-500 text-sm;
+}
+.card-value {
+  @apply text-3xl font-semibold text-slate-800;
+}
