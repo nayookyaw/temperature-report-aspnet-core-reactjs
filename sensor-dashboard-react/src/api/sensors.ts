@@ -7,7 +7,7 @@ export function useSensors() {
   return useQuery({
     queryKey: ['sensors'],
     queryFn: async (): Promise<SensorDto[]> => {
-      const res = await api.get<ApiResponse<SensorDto[]>>('/api/v1/sensor/list')
+      const res = await api.get<ApiResponse<SensorDto[]>>('/api/v1/sensor/list?Limit=10')
       if (!res.data.isSuccess) throw new Error(res.data.message)
       return res.data.data
     },
